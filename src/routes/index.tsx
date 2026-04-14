@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { AnimatedSection } from "@/components/AnimatedSection";
+import { useI18n } from "@/i18n/context";
 import heroBg from "@/assets/hero-bg.jpg";
 
 export const Route = createFileRoute("/")({
@@ -17,6 +18,8 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
+  const { t } = useI18n();
+
   return (
     <div className="min-h-screen">
       {/* Hero */}
@@ -39,15 +42,15 @@ function Index() {
             transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
           >
             <p className="text-primary text-sm font-semibold uppercase tracking-[0.3em] mb-4">
-              Tech · Leadership · Education
+              {t("home.tagline")}
             </p>
             <h1 className="font-heading text-5xl md:text-7xl lg:text-8xl font-bold leading-[0.95] tracking-tight">
-              Jesse David
+              {t("home.name1")}
               <br />
-              <span className="gold-gradient-text">Nsengiyumva</span>
+              <span className="gold-gradient-text">{t("home.name2")}</span>
             </h1>
             <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              Building Africa's next generation of purpose-driven leaders by combining technology, AI, and leadership development to unlock human potential at scale.
+              {t("home.subtitle")}
             </p>
           </motion.div>
 
@@ -61,14 +64,14 @@ function Index() {
               to="/story"
               className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-3 rounded-lg font-heading font-semibold text-sm hover:opacity-90 transition-opacity"
             >
-              Read My Story
+              {t("home.readStory")}
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
             </Link>
             <Link
               to="/impact"
               className="inline-flex items-center gap-2 border border-border text-foreground px-8 py-3 rounded-lg font-heading font-semibold text-sm hover:bg-secondary transition-colors"
             >
-              View Impact
+              {t("home.viewImpact")}
             </Link>
           </motion.div>
         </div>
@@ -91,10 +94,10 @@ function Index() {
           <AnimatedSection>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {[
-                { value: "700+", label: "Students Trained" },
-                { value: "100+", label: "Workshops Delivered" },
-                { value: "3", label: "Continents Reached" },
-                { value: "50+", label: "Youth Mentored" },
+                { value: "700+", label: t("home.studentsTrained") },
+                { value: "100+", label: t("home.workshopsDelivered") },
+                { value: "3", label: t("home.continentsReached") },
+                { value: "50+", label: t("home.youthMentored") },
               ].map((stat) => (
                 <div key={stat.label} className="stat-card rounded-xl p-6 text-center">
                   <div className="font-heading text-3xl md:text-4xl font-bold gold-gradient-text">
@@ -112,27 +115,15 @@ function Index() {
       <section className="py-16 px-6">
         <div className="max-w-5xl mx-auto">
           <AnimatedSection>
-            <p className="text-primary text-xs font-semibold uppercase tracking-[0.3em] mb-3">Core Pillars</p>
-            <h2 className="font-heading text-3xl md:text-4xl font-bold">What I Build</h2>
+            <p className="text-primary text-xs font-semibold uppercase tracking-[0.3em] mb-3">{t("home.corePillars")}</p>
+            <h2 className="font-heading text-3xl md:text-4xl font-bold">{t("home.whatIBuild")}</h2>
           </AnimatedSection>
 
           <div className="grid md:grid-cols-3 gap-6 mt-10">
             {[
-              {
-                icon: "💻",
-                title: "Technology & Education",
-                desc: "Empowering youth with AI, coding, and digital skills through hands-on, project-based learning.",
-              },
-              {
-                icon: "🧭",
-                title: "Leadership Development",
-                desc: "Shaping purpose-driven leaders using principles inspired by transformational thinkers.",
-              },
-              {
-                icon: "🚀",
-                title: "Innovation Systems",
-                desc: "Building practical solutions that solve real-world local and global challenges.",
-              },
+              { icon: "💻", title: t("home.pillar1Title"), desc: t("home.pillar1Desc") },
+              { icon: "🧭", title: t("home.pillar2Title"), desc: t("home.pillar2Desc") },
+              { icon: "🚀", title: t("home.pillar3Title"), desc: t("home.pillar3Desc") },
             ].map((pillar, i) => (
               <AnimatedSection key={pillar.title} delay={i * 0.1}>
                 <div className="stat-card rounded-xl p-8 h-full hover:card-glow transition-shadow">
@@ -151,23 +142,23 @@ function Index() {
         <AnimatedSection>
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="font-heading text-3xl md:text-4xl font-bold">
-              Ready to <span className="gold-gradient-text">Connect</span>?
+              {t("home.readyTo")} <span className="gold-gradient-text">{t("home.connect")}</span>?
             </h2>
             <p className="text-muted-foreground mt-4 max-w-lg mx-auto">
-              Whether it's a scholarship, fellowship, tech role, or partnership — I'm building toward a future where every young person can access opportunity.
+              {t("home.ctaDesc")}
             </p>
             <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link
                 to="/vision"
                 className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-3 rounded-lg font-heading font-semibold text-sm hover:opacity-90 transition-opacity"
               >
-                Explore My Vision
+                {t("home.exploreVision")}
               </Link>
               <Link
                 to="/work"
                 className="inline-flex items-center gap-2 border border-border text-foreground px-8 py-3 rounded-lg font-heading font-semibold text-sm hover:bg-secondary transition-colors"
               >
-                See My Work
+                {t("home.seeWork")}
               </Link>
             </div>
           </div>
