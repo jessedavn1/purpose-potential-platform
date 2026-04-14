@@ -1,11 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { AnimatedSection } from "@/components/AnimatedSection";
+import { useI18n } from "@/i18n/context";
 
 export const Route = createFileRoute("/work")({
   head: () => ({
     meta: [
       { title: "Core Work & Systems — Jesse David Nsengiyumva" },
-      { name: "description", content: "Technology & Education, Leadership Development, and Innovation Systems — the three pillars of Jesse David's work." },
+      { name: "description", content: "Technology & Education, Leadership Development, and Innovation Systems." },
       { property: "og:title", content: "Core Work — Jesse David Nsengiyumva" },
       { property: "og:description", content: "Three pillars: Technology, Leadership, and Innovation Systems." },
     ],
@@ -14,39 +15,26 @@ export const Route = createFileRoute("/work")({
 });
 
 function WorkPage() {
+  const { t } = useI18n();
+
   const pillars = [
     {
       icon: "💻",
-      title: "Technology & Education",
-      subtitle: "Empowering youth with AI, coding, and digital skills",
-      details: [
-        "Teaching AI fundamentals and practical applications to students across multiple institutions",
-        "Building personalized coding curricula that adapt to individual student interests and career goals",
-        "Delivering project-based learning that bridges the gap between theory and real-world application",
-        "Volunteering at the U.S. Embassy Burundi teaching IT and software development",
-      ],
+      title: t("work.p1Title"),
+      subtitle: t("work.p1Sub"),
+      details: [t("work.p1d1"), t("work.p1d2"), t("work.p1d3"), t("work.p1d4")],
     },
     {
       icon: "🧭",
-      title: "Leadership Development",
-      subtitle: "Shaping purpose-driven leaders",
-      details: [
-        "Mentoring 50+ youth in personal development, purpose discovery, and leadership principles",
-        "Drawing from transformational thinkers like Myles Munroe to build character-first leadership",
-        "Creating frameworks that help young people identify their unique contribution to society",
-        "Supporting academic learners through UPchieve's global tutoring platform",
-      ],
+      title: t("work.p2Title"),
+      subtitle: t("work.p2Sub"),
+      details: [t("work.p2d1"), t("work.p2d2"), t("work.p2d3"), t("work.p2d4")],
     },
     {
       icon: "🚀",
-      title: "Innovation Systems",
-      subtitle: "Building practical solutions for real-world challenges",
-      details: [
-        "Designed the American–Burundi Mall innovation project connecting local businesses to global markets",
-        "Developing project-based learning systems that produce tangible digital solutions",
-        "Creating curriculum models that can scale across institutions and borders",
-        "Contributing to Public Diplomacy programs at the U.S. Embassy Burundi",
-      ],
+      title: t("work.p3Title"),
+      subtitle: t("work.p3Sub"),
+      details: [t("work.p3d1"), t("work.p3d2"), t("work.p3d3"), t("work.p3d4")],
     },
   ];
 
@@ -54,12 +42,12 @@ function WorkPage() {
     <div className="min-h-screen pt-24 pb-20 px-6">
       <div className="max-w-5xl mx-auto">
         <AnimatedSection>
-          <p className="text-primary text-xs font-semibold uppercase tracking-[0.3em] mb-3">Core Work & Systems</p>
+          <p className="text-primary text-xs font-semibold uppercase tracking-[0.3em] mb-3">{t("work.label")}</p>
           <h1 className="font-heading text-4xl md:text-5xl font-bold leading-tight">
-            Three <span className="gold-gradient-text">Pillars</span>
+            {t("work.title1")} <span className="gold-gradient-text">{t("work.title2")}</span>
           </h1>
           <p className="text-muted-foreground mt-4 text-lg max-w-2xl">
-            My work operates on three interconnected pillars that create a comprehensive system for unlocking human potential.
+            {t("work.subtitle")}
           </p>
         </AnimatedSection>
 

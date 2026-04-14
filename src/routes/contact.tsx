@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { AnimatedSection } from "@/components/AnimatedSection";
+import { useI18n } from "@/i18n/context";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -109,21 +110,21 @@ const socials = [
 ];
 
 function ContactPage() {
+  const { t } = useI18n();
+
   return (
     <div className="min-h-screen pt-24 pb-16 px-6">
       <div className="max-w-5xl mx-auto">
-        {/* Header */}
         <AnimatedSection>
-          <p className="text-primary text-xs font-semibold uppercase tracking-[0.3em] mb-3">Get In Touch</p>
+          <p className="text-primary text-xs font-semibold uppercase tracking-[0.3em] mb-3">{t("contact.label")}</p>
           <h1 className="font-heading text-4xl md:text-6xl font-bold">
-            Let's <span className="gold-gradient-text">Connect</span>
+            {t("contact.title1")} <span className="gold-gradient-text">{t("contact.title2")}</span>
           </h1>
           <p className="text-muted-foreground mt-4 max-w-2xl text-lg leading-relaxed">
-            Whether you're interested in collaboration, mentorship, speaking engagements, or opportunities — I'd love to hear from you.
+            {t("contact.subtitle")}
           </p>
         </AnimatedSection>
 
-        {/* Action Buttons */}
         <AnimatedSection delay={0.1} className="mt-12">
           <div className="flex flex-col sm:flex-row gap-4">
             <a
@@ -135,7 +136,7 @@ function ContactPage() {
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
                 <path d="M15 10l-4 4l6 6l4-16l-18 7l4 2l2 6l3-4"/>
               </svg>
-              Talk With Me — Book a Meeting
+              {t("contact.talkWithMe")}
             </a>
             <a
               href="/Jesse_David_Nsengiyumva_CV.pdf"
@@ -147,15 +148,14 @@ function ContactPage() {
                 <polyline points="7 10 12 15 17 10"/>
                 <line x1="12" y1="15" x2="12" y2="3"/>
               </svg>
-              Download My CV
+              {t("contact.downloadCV")}
             </a>
           </div>
         </AnimatedSection>
 
-        {/* Social Links */}
         <AnimatedSection delay={0.2} className="mt-16">
           <h2 className="font-heading text-2xl md:text-3xl font-bold mb-8">
-            Find Me <span className="gold-gradient-text">Online</span>
+            {t("contact.findMe")} <span className="gold-gradient-text">{t("contact.online")}</span>
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {socials.map((social) => (
@@ -182,11 +182,10 @@ function ContactPage() {
           </div>
         </AnimatedSection>
 
-        {/* Recognition & Recommendation */}
         <AnimatedSection delay={0.3} className="mt-20">
-          <p className="text-primary text-xs font-semibold uppercase tracking-[0.3em] mb-3">Endorsements</p>
+          <p className="text-primary text-xs font-semibold uppercase tracking-[0.3em] mb-3">{t("contact.endorsements")}</p>
           <h2 className="font-heading text-2xl md:text-3xl font-bold mb-8">
-            Recognition & <span className="gold-gradient-text">Recommendations</span>
+            {t("contact.recognition")} <span className="gold-gradient-text">{t("contact.recommendations")}</span>
           </h2>
 
           <div className="grid md:grid-cols-2 gap-6">
@@ -199,12 +198,10 @@ function ContactPage() {
                 </div>
                 <h3 className="font-heading font-semibold text-lg">U.S. Embassy Burundi</h3>
               </div>
-              <p className="text-muted-foreground text-sm leading-relaxed">
-                Recognized as a key contributor in Public Diplomacy programs, delivering IT training and software development workshops that empowered hundreds of students across multiple cohorts.
-              </p>
+              <p className="text-muted-foreground text-sm leading-relaxed">{t("contact.embassyDesc")}</p>
               <div className="mt-4 inline-flex items-center gap-2 text-xs text-primary font-medium">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-4 h-4"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-                Formal Recognition
+                {t("contact.formalRecognition")}
               </div>
             </div>
 
@@ -217,12 +214,10 @@ function ContactPage() {
                 </div>
                 <h3 className="font-heading font-semibold text-lg">UPchieve Mentorship</h3>
               </div>
-              <p className="text-muted-foreground text-sm leading-relaxed">
-                Recommended for exceptional dedication to academic coaching, supporting 10+ students in mathematics, science, and technology — contributing to measurable improvement in student outcomes.
-              </p>
+              <p className="text-muted-foreground text-sm leading-relaxed">{t("contact.upchieveDesc")}</p>
               <div className="mt-4 inline-flex items-center gap-2 text-xs text-primary font-medium">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-4 h-4"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-                Formal Recommendation
+                {t("contact.formalRecommendation")}
               </div>
             </div>
 
@@ -233,14 +228,12 @@ function ContactPage() {
                     <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4-4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/>
                   </svg>
                 </div>
-                <h3 className="font-heading font-semibold text-lg">700+ Students Impacted</h3>
+                <h3 className="font-heading font-semibold text-lg">{t("contact.studentsTitle")}</h3>
               </div>
-              <p className="text-muted-foreground text-sm leading-relaxed">
-                Trained over 700 students across AI, IT, software development, and digital literacy programs — with impact spanning Africa, North America, and Asia.
-              </p>
+              <p className="text-muted-foreground text-sm leading-relaxed">{t("contact.studentsDesc")}</p>
               <div className="mt-4 inline-flex items-center gap-2 text-xs text-primary font-medium">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-4 h-4"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-                Verified Impact
+                {t("contact.verifiedImpact")}
               </div>
             </div>
 
@@ -251,14 +244,12 @@ function ContactPage() {
                     <circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/>
                   </svg>
                 </div>
-                <h3 className="font-heading font-semibold text-lg">Global Program Contributor</h3>
+                <h3 className="font-heading font-semibold text-lg">{t("contact.globalTitle")}</h3>
               </div>
-              <p className="text-muted-foreground text-sm leading-relaxed">
-                Actively contributing to international education programs and digital literacy initiatives, bridging the gap between local talent and global opportunity.
-              </p>
+              <p className="text-muted-foreground text-sm leading-relaxed">{t("contact.globalDesc")}</p>
               <div className="mt-4 inline-flex items-center gap-2 text-xs text-primary font-medium">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-4 h-4"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-                Ongoing Contribution
+                {t("contact.globalContributor")}
               </div>
             </div>
           </div>

@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { AnimatedSection } from "@/components/AnimatedSection";
+import { useI18n } from "@/i18n/context";
 
 export const Route = createFileRoute("/story")({
   head: () => ({
@@ -14,53 +15,33 @@ export const Route = createFileRoute("/story")({
 });
 
 function StoryPage() {
+  const { t } = useI18n();
+
   const milestones = [
-    {
-      period: "Early Years",
-      title: "The Question That Started Everything",
-      content: "I grew up in a public education system where learning was largely theoretical. We studied computer science without access to computers, and science subjects like physics and chemistry without real laboratories. From an early age, I began to question how students like me—without resources at home—would ever truly gain practical skills.",
-    },
-    {
-      period: "High School",
-      title: "First Opportunity to Speak Up",
-      content: "During my final year of high school, I was selected to represent my school in a program focused on finding digital solutions in education. I used that opportunity to highlight the very issue that had always been in my heart—the lack of practical access to technology in schools.",
-    },
-    {
-      period: "Self-Education",
-      title: "Taking Responsibility",
-      content: "After high school, I made a decision to take responsibility for my own growth and began teaching myself coding, technology, and other essential skills. Alongside this, I studied books on education, science, and financial literacy to prepare myself to contribute meaningfully.",
-    },
-    {
-      period: "U.S. Embassy Burundi",
-      title: "A Turning Point",
-      content: "My journey took a major turn when I joined the U.S. Embassy Burundi as a volunteer, where I taught IT, software development, and personal development. There, I witnessed how access to practical learning transforms confidence and ambition in young people.",
-    },
-    {
-      period: "Today",
-      title: "Scaling Impact",
-      content: "Since then, I have trained over 700+ students in AI and IT, mentored 50+ students in personal development, and supported academic learners through UPchieve. Today, my mission is to transform this experience into a system that ensures young people—regardless of background—can access practical education.",
-    },
+    { period: t("story.earlyYears"), title: t("story.earlyTitle"), content: t("story.earlyContent") },
+    { period: t("story.highSchool"), title: t("story.highTitle"), content: t("story.highContent") },
+    { period: t("story.selfEd"), title: t("story.selfTitle"), content: t("story.selfContent") },
+    { period: t("story.embassy"), title: t("story.embassyTitle"), content: t("story.embassyContent") },
+    { period: t("story.today"), title: t("story.todayTitle"), content: t("story.todayContent") },
   ];
 
   return (
     <div className="min-h-screen pt-24 pb-20 px-6">
       <div className="max-w-3xl mx-auto">
         <AnimatedSection>
-          <p className="text-primary text-xs font-semibold uppercase tracking-[0.3em] mb-3">Signature Story</p>
+          <p className="text-primary text-xs font-semibold uppercase tracking-[0.3em] mb-3">{t("story.label")}</p>
           <h1 className="font-heading text-4xl md:text-5xl font-bold leading-tight">
-            From Curiosity to <span className="gold-gradient-text">Mission</span>
+            {t("story.title1")} <span className="gold-gradient-text">{t("story.title2")}</span>
           </h1>
           <p className="text-muted-foreground mt-4 text-lg leading-relaxed">
-            A journey of transforming personal challenge into collective opportunity.
+            {t("story.subtitle")}
           </p>
         </AnimatedSection>
 
         <div className="section-divider my-12" />
 
         <div className="relative">
-          {/* Timeline line */}
           <div className="absolute left-0 md:left-8 top-0 bottom-0 w-px bg-border" />
-
           <div className="space-y-12">
             {milestones.map((m, i) => (
               <AnimatedSection key={m.period} delay={i * 0.08}>
