@@ -39,6 +39,10 @@ export const Route = createRootRoute({
       { name: "author", content: "Jesse David Nsengiyumva" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
+      { property: "og:title", content: "Jesse David Nsengiyumva — Portfolio" },
+      { name: "twitter:title", content: "Jesse David Nsengiyumva — Portfolio" },
+      { property: "og:description", content: "Tech, Leadership & Education Innovation Portfolio" },
+      { name: "twitter:description", content: "Tech, Leadership & Education Innovation Portfolio" },
     ],
     links: [
       {
