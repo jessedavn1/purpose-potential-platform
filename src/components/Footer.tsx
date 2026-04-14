@@ -21,6 +21,7 @@ export function Footer() {
               <Link to="/impact" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Impact</Link>
               <Link to="/work" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Work</Link>
               <Link to="/vision" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Vision</Link>
+              <Link to="/contact" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Contact</Link>
             </div>
           </div>
         </div>

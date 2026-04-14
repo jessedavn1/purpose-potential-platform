@@ -13,6 +13,7 @@ import { Route as WorkRouteImport } from './routes/work'
 import { Route as VisionRouteImport } from './routes/vision'
 import { Route as StoryRouteImport } from './routes/story'
 import { Route as ImpactRouteImport } from './routes/impact'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as IndexRouteImport } from './routes/index'
 
 const WorkRoute = WorkRouteImport.update({
@@ -35,6 +36,11 @@ const ImpactRoute = ImpactRouteImport.update({
   path: '/impact',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -43,6 +49,7 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
   '/impact': typeof ImpactRoute
   '/story': typeof StoryRoute
   '/vision': typeof VisionRoute
@@ -50,6 +57,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
   '/impact': typeof ImpactRoute
   '/story': typeof StoryRoute
   '/vision': typeof VisionRoute
@@ -58,6 +66,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
   '/impact': typeof ImpactRoute
   '/story': typeof StoryRoute
   '/vision': typeof VisionRoute
@@ -65,14 +74,15 @@ export interface FileRoutesById {
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/impact' | '/story' | '/vision' | '/work'
+  fullPaths: '/' | '/contact' | '/impact' | '/story' | '/vision' | '/work'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/impact' | '/story' | '/vision' | '/work'
-  id: '__root__' | '/' | '/impact' | '/story' | '/vision' | '/work'
+  to: '/' | '/contact' | '/impact' | '/story' | '/vision' | '/work'
+  id: '__root__' | '/' | '/contact' | '/impact' | '/story' | '/vision' | '/work'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ContactRoute: typeof ContactRoute
   ImpactRoute: typeof ImpactRoute
   StoryRoute: typeof StoryRoute
   VisionRoute: typeof VisionRoute
@@ -109,6 +119,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ImpactRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -121,6 +138,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ContactRoute: ContactRoute,
   ImpactRoute: ImpactRoute,
   StoryRoute: StoryRoute,
   VisionRoute: VisionRoute,

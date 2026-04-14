@@ -8,6 +8,7 @@ const navLinks = [
   { to: "/impact", label: "Impact" },
   { to: "/work", label: "Work" },
   { to: "/vision", label: "Vision" },
+  { to: "/contact", label: "Contact" },
 ] as const;
 
 export function Navigation() {
